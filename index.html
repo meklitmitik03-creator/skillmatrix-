@@ -4,20 +4,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Neway Skills Development Club</title>
+  <meta name="theme-color" content="#031127">
+  <meta name="description" content="Neway Challenge Academy Skills Development Club — learn, grow, and achieve together.">
+
   <link rel="stylesheet" href="style.css">
+
   <style>
     body {
       background-image:
-        linear-gradient(90deg, rgba(3, 17, 39, .82),
-        rgba(3, 17, 39, .48)),
-        url("data:image/jpeg;base64,https://share.google/4DnyIZG01TUAenGPI");
+        linear-gradient(
+          90deg,
+          rgba(3, 17, 39, 0.82),
+          rgba(3, 17, 39, 0.48)
+        ),
+        url("data:image/jpeg;base64,PASTE_IMAGE_DATA_HERE");
+
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
     }
   </style>
 </head>
+
 <body>
+
+  <!-- Navigation -->
   <header class="navbar">
-    <a href="#" class="brand">
+    <a href="#home" class="brand">
       <div class="logo">✦</div>
       <div>
         <strong>NEWAY CHALLENGE ACADEMY</strong>
@@ -32,73 +48,148 @@
       <a href="#contact">Contact</a>
     </nav>
 
-    <button class="menu-button" id="menuButton"
-      aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    <button
+      type="button"
+      class="menu-button"
+      id="menuButton"
+      aria-label="Toggle navigation"
+      aria-expanded="false">
+      ☰
+    </button>
   </header>
 
+  <!-- Main content -->
   <main class="layout" id="home">
+
+    <!-- Welcome section -->
     <section class="welcome" id="about">
+
       <p class="eyebrow">SKILLS DEVELOPMENT CLUB</p>
-      <h1>Discover Your<br><span>Talent.</span></h1>
+
+      <h1>
+        Discover Your<br>
+        <span>Talent.</span>
+      </h1>
+
       <p class="description">
         Welcome to the Skills Development Club of Neway Challenge Academy.
         Learn new skills, share ideas, develop confidence, and work together
         to create a brighter future.
       </p>
-      <p class="slogan">— Everybody has their own talent.</p>
+
+      <p class="slogan">
+        — Everybody has their own talent.
+      </p>
 
       <div class="values" id="activities">
-        <div><span>♧</span><p>Learn</p></div>
-        <div><span>♙</span><p>Grow</p></div>
-        <div><span>☆</span><p>Achieve</p></div>
+        <div>
+          <span>♧</span>
+          <p>Learn</p>
+        </div>
+
+        <div>
+          <span>♙</span>
+          <p>Grow</p>
+        </div>
+
+        <div>
+          <span>☆</span>
+          <p>Achieve</p>
+        </div>
       </div>
+
     </section>
 
+    <!-- Sign-in card -->
     <section class="login-card" aria-labelledby="loginTitle">
-      <div class="cap">🎓</div>
+
+      <div class="cap" aria-hidden="true">🎓</div>
+
       <h2 id="loginTitle">Sign In</h2>
+
       <p class="subtitle">
         Welcome back! Please enter your details<br class="desktop-only">
         to access your account.
       </p>
 
       <form id="loginForm">
+
         <label for="email">Email Address</label>
-        <input id="email" type="email" placeholder="✉  you@example.com"
-          autocomplete="username" required>
+
+        <input
+          id="email"
+          name="email"
+          type="email"
+          placeholder="✉ you@example.com"
+          autocomplete="username"
+          required>
 
         <label for="password">Password</label>
+
         <div class="password-box">
-          <input id="password" type="password"
+          <input
+            id="password"
+            name="password"
+            type="password"
             placeholder="Enter your password"
-            autocomplete="current-password" required>
-          <button type="button" id="togglePassword"
-            aria-label="Show password" aria-pressed="false">◉</button>
+            autocomplete="current-password"
+            required>
+
+          <button
+            type="button"
+            id="togglePassword"
+            aria-label="Show password"
+            aria-pressed="false">
+            ◉
+          </button>
         </div>
 
         <div class="options">
+
           <label class="remember">
-            <input type="checkbox" id="remember">
+            <input type="checkbox" id="remember" name="remember">
             <span>Remember me</span>
           </label>
+
           <a href="#" id="forgotLink">Forgot password?</a>
+
         </div>
 
-        <button type="submit" class="sign-in">Sign In <span>→</span></button>
-        <p id="message" class="message" role="status" aria-live="polite"></p>
+        <button type="submit" class="sign-in" id="signInButton">
+          Sign In <span>→</span>
+        </button>
+
+        <p
+          id="message"
+          class="message"
+          role="status"
+          aria-live="polite">
+        </p>
+
       </form>
 
-      <div class="separator"><span>Or</span></div>
+      <div class="separator">
+        <span>Or</span>
+      </div>
+
       <p class="account-help" id="contact">
         ♙ &nbsp; Contact a club leader for an account
       </p>
+
       <footer>
         Neway Challenge Academy | Skills Development Club<br>
         © 2026. All rights reserved.
       </footer>
+
     </section>
+
   </main>
 
+  <!-- Supabase JavaScript library -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <!-- Your JavaScript -->
   <script src="script.js"></script>
+
 </body>
 </html>
