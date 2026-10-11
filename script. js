@@ -1,0 +1,36 @@
+
+const password = document.getElementById("password");
+const togglePassword = document.getElementById("togglePassword");
+const loginForm = document.getElementById("loginForm");
+const message = document.getElementById("message");
+const menuButton = document.getElementById("menuButton");
+const nav = document.querySelector(".navbar nav");
+const forgotLink = document.getElementById("forgotLink");
+
+togglePassword.addEventListener("click", () => {
+  const isHidden = password.type === "password";
+
+  password.type = isHidden ? "text" : "password";
+  togglePassword.textContent = isHidden ? "◉" : "◎";
+  togglePassword.setAttribute("aria-label",
+    isHidden ? "Hide password" : "Show password");
+  togglePassword.setAttribute("aria-pressed", String(isHidden));
+});
+
+menuButton.addEventListener("click", () => {
+  const isOpen = nav.classList.toggle("open");
+  menuButton.setAttribute("aria-expanded", String(isOpen));
+});
+
+loginForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  message.textContent =
+    "The page is ready, but secure sign-in is not connected yet. We'll connect the database next.";
+});
+
+forgotLink.addEventListener("click", (event) => {
+  event.preventDefault();
+  message.textContent =
+    "Please contact an authorized club leader for password assistance.";
+});
