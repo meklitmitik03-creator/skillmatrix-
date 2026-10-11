@@ -1,4 +1,12 @@
 
+const SUPABASE_URL = "YOUR_SUPABASE_PROJECT_URL";
+const SUPABASE_PUBLISHABLE_KEY = "YOUR_SUPABASE_PUBLISHABLE_KEY";
+
+const db = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_PUBLISHABLE_KEY
+);
+
 const password = document.getElementById("password");
 const togglePassword = document.getElementById("togglePassword");
 const loginForm = document.getElementById("loginForm");
@@ -7,30 +15,98 @@ const menuButton = document.getElementById("menuButton");
 const nav = document.querySelector(".navbar nav");
 const forgotLink = document.getElementById("forgotLink");
 
-togglePassword.addEventListener("click", () => {
+function showMessage(text, isError = false) {
+  message.textContent = text;
+  message.style.color = isError ? "#ff6b6b" : "#4ade80";
+}
+
+togglePassword?.addEventListener("click", () => {
   const isHidden = password.type === "password";
 
   password.type = isHidden ? "text" : "password";
   togglePassword.textContent = isHidden ? "◉" : "◎";
-  togglePassword.setAttribute("aria-label",
-    isHidden ? "Hide password" : "Show password");
+  togglePassword.setAttribute(
+    "aria-label",
+    isHidden ? "Hide password" : "Show password"
+  );
   togglePassword.setAttribute("aria-pressed", String(isHidden));
 });
 
-menuButton.addEventListener("click", () => {
+menuButton?.addEventListener("click", () => {
   const isOpen = nav.classList.toggle("open");
   menuButton.setAttribute("aria-expanded", String(isOpen));
 });
 
-loginForm.addEventListener("submit", (event) => {
+loginForm.addEventListener("submit", async (event) => {
   event.preventDefault();
 
-  message.textContent =
-    "The page is ready, but secure sign-in is not connected yet. We'll connect the database next.";
+  const emailInput = loginForm.querySelector(
+    'input[type="email"], input[name="email"]'
+  );
+
+  const email = emailInput?.value.trim();
+  const passwordValue = password.value;
+
+  if (!email || !passwordValue) {
+    showMessage("Enter your email and password.", true);
+    return;
+  }
+
+  const submitButton = loginForm.querySelector(
+    'button[type="submit"], input[type="submit"]'
+  );
+
+  if (submitButton) submitButton.disabled = true;
+  showMessage("Signing in...");
+
+  try {
+    const { data, error } = await db.auth.signInWithPassword({
+      email,
+      password: passwordValue
+    });
+
+    if (error) throw error;
+
+    showMessage("Sign-in successful! Welcome to Skillmatrix.");
+
+    // Change this to your actual dashboard filename.
+    window.location.href = "dashboard.html";
+  } catch (error) {
+    showMessage(
+      error.message || "Sign-in failed. Please try again.",
+      true
+    );
+  } finally {
+    if (submitButton) submitButton.disabled = false;
+  }
 });
 
-forgotLink.addEventListener("click", (event) => {
+forgotLink?.addEventListener("click", async (event) => {
   event.preventDefault();
-  message.textContent =
-    "Please contact an authorized club leader for password assistance.";
+
+  const emailInput = loginForm.querySelector(
+    'input[type="email"], input[name="email"]'
+  );
+
+  const email = emailInput?.value.trim();
+
+  if (!email) {
+    showMessage("Enter your email first to reset your password.", true);
+    emailInput?.focus();
+    return;
+  }
+
+  showMessage("Sending password reset email...");
+
+  try {
+    const { error } = await db.auth.resetPasswordForEmail(email, {
+      redirectTo: window.location.origin + "/reset-password.html"
+    });
+
+    if (error) throw error;
+
+    showMessage("If an account exists, a password reset email will be sent.");
+  } catch (error) {
+    showMessage(error.message || "Could not send the reset email.", true);
+  }
 });
