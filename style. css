@@ -1,0 +1,415 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  font-family: Arial, sans-serif;
+  color: white;
+  background-color: #071a32;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.navbar {
+  min-height: 105px;
+  padding: 20px 4%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  background: rgba(3, 17, 39, .68);
+  border-bottom: 1px solid rgba(255, 255, 255, .1);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  color: white;
+  text-decoration: none;
+}
+
+.logo {
+  width: 64px;
+  height: 64px;
+  border: 3px solid #f5c331;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #f5c331;
+  font-size: 35px;
+}
+
+.brand strong {
+  display: block;
+  font-size: clamp(13px, 1.7vw, 22px);
+  margin-bottom: 7px;
+}
+
+.brand span {
+  font-size: 16px;
+}
+
+nav {
+  display: flex;
+  gap: 30px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+nav a:hover,
+nav a:first-child {
+  color: #f5c331;
+}
+
+.menu-button {
+  display: none;
+  color: #f5c331;
+  background: transparent;
+  border: 0;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.layout {
+  min-height: calc(100vh - 105px);
+  padding: 45px 4%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(350px, 450px);
+  align-items: center;
+  gap: 45px;
+}
+
+.welcome {
+  max-width: 590px;
+}
+
+.eyebrow {
+  color: #f5c331;
+  font-size: 17px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+}
+
+.welcome h1 {
+  font-size: clamp(44px, 5vw, 70px);
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.welcome h1 span {
+  color: #f5c331;
+}
+
+.description {
+  max-width: 500px;
+  font-size: 18px;
+  line-height: 1.7;
+  color: #e4eaf3;
+}
+
+.slogan {
+  color: #f5c331;
+  font-size: 20px;
+  font-style: italic;
+  font-weight: bold;
+  margin-top: 25px;
+}
+
+.values {
+  display: flex;
+  gap: 55px;
+  margin-top: 75px;
+  text-align: center;
+  color: #f5c331;
+}
+
+.values span {
+  font-size: 32px;
+}
+
+.values p {
+  margin-top: 8px;
+}
+
+.login-card {
+  width: 100%;
+  padding: 38px 32px;
+  background: rgba(4, 24, 46, .89);
+  border: 1px solid rgba(205, 222, 242, .7);
+  border-radius: 18px;
+  box-shadow: 0 18px 55px rgba(0, 0, 0, .3);
+  backdrop-filter: blur(12px);
+}
+
+.cap {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.login-card h2 {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: #c2d1e5;
+  line-height: 1.6;
+  margin-bottom: 27px;
+}
+
+.login-card form > label {
+  display: block;
+  margin: 20px 0 9px;
+  font-weight: bold;
+}
+
+.login-card input:not([type="checkbox"]) {
+  width: 100%;
+  min-height: 51px;
+  padding: 14px;
+  border: 1px solid #a4b8cf;
+  border-radius: 10px;
+  background: rgba(6, 37, 66, .85);
+  color: white;
+  font-size: 16px;
+}
+
+.login-card input::placeholder {
+  color: #bdcde0;
+}
+
+.login-card input:focus {
+  outline: 2px solid #f5c331;
+  outline-offset: 2px;
+}
+
+.password-box {
+  position: relative;
+}
+
+.password-box input {
+  padding-right: 55px !important;
+}
+
+.password-box button {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  background: transparent;
+  border: 0;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 22px 0;
+  font-size: 13px;
+}
+
+.remember {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.remember input {
+  accent-color: #f5c331;
+  width: 18px;
+  height: 18px;
+}
+
+.options a {
+  color: #f5c331;
+}
+
+.sign-in {
+  width: 100%;
+  min-height: 54px;
+  border: 0;
+  border-radius: 10px;
+  background: #f5c331;
+  color: #091a31;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.sign-in:hover {
+  background: #ffda66;
+}
+
+.sign-in span {
+  margin-left: 15px;
+  font-size: 22px;
+}
+
+.message {
+  margin-top: 12px;
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+.separator {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 26px 0;
+}
+
+.separator::before,
+.separator::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, .4);
+}
+
+.account-help {
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.login-card footer {
+  color: #bdcde0;
+  font-size: 12px;
+  line-height: 1.8;
+  text-align: center;
+  margin-top: 40px;
+}
+
+@media (max-width: 900px) {
+  .navbar {
+    flex-wrap: wrap;
+  }
+
+  nav {
+    gap: 18px;
+  }
+
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 35px;
+    justify-items: center;
+  }
+
+  .welcome {
+    max-width: 650px;
+    width: 100%;
+  }
+
+  .login-card {
+    max-width: 480px;
+  }
+
+  .values {
+    margin-top: 35px;
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    background-attachment: scroll;
+  }
+
+  .navbar {
+    min-height: auto;
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .brand {
+    gap: 10px;
+    flex: 1;
+  }
+
+  .logo {
+    width: 45px;
+    height: 45px;
+    font-size: 25px;
+  }
+
+  .brand strong {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .brand span {
+    font-size: 12px;
+  }
+
+  .menu-button {
+    display: block;
+  }
+
+  nav {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  nav.open {
+    display: flex;
+  }
+
+  nav a {
+    padding: 12px 4px;
+    border-top: 1px solid rgba(255, 255, 255, .12);
+  }
+
+  .layout {
+    padding: 30px 16px;
+  }
+
+  .welcome h1 {
+    font-size: 47px;
+  }
+
+  .description {
+    font-size: 16px;
+  }
+
+  .slogan {
+    font-size: 16px;
+  }
+
+  .values {
+    gap: 35px;
+  }
+
+  .login-card {
+    padding: 28px 21px;
+  }
+
+  .login-card h2 {
+    font-size: 28px;
+  }
+
+  .desktop-only {
+    display: none;
+  }
+}
